@@ -26,7 +26,7 @@ function Contact() {
       .then(
         (result) => {
           console.log(result.text);
-        //   console.log("message ok");
+          //   console.log("message ok");
         },
         (error) => {
           console.log(error.text);

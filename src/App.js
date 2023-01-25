@@ -8,24 +8,20 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import BmiCalculator from "./pages/BmiCalculator";
 import Contact from "./pages/Contact";
-import Login from "./components/Login/Login";
-import Signup from "./components/Signup/Signup";
-import { auth } from "./firebase";
 
 function App() {
-  const [userName, setUserName] = useState("");
-
-  useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        setUserName(user.displayName);
-      } else setUserName("");
-    });
-  }, []);
   return (
     <>
-      <Signup />
-      <Login />
+      <Box width="400px" sx={{ width: { xl: "1488px" } }} m="auto">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/exercise/:id" element={<ExerciseDetail />} />
+          <Route path="/BmiCalculator" element={<BmiCalculator />} />
+          <Route path="/Contact" element={<Contact />} />
+        </Routes>
+        <Footer />
+      </Box>
     </>
   );
 }
